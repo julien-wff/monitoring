@@ -1,11 +1,8 @@
 route:
-    receiver: 'slack'
+    receiver: 'gotify'
 
 receivers:
-    - name: 'slack'
-      slack_configs:
-          - send_resolved: true
-            text: "{{ .CommonAnnotations.description }}"
-            username: 'Prometheus'
-            channel: '#<channel-name>'
-            api_url: 'https://hooks.slack.com/services/<webhook-id>'
+    - name: 'gotify'
+      webhook_configs:
+      - url: http://alertmanager-gotify-bridge:8080/gotify_webhook
+        send_resolved: false
