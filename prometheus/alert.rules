@@ -19,7 +19,7 @@ groups:
       severity: warning
     annotations:
       summary: "Server under high load"
-      description: "Average load is at {{ humanize $value }}."
+      description: "Average load is at {{ humanizePercentage $value }}."
 
   - alert: high_memory_load
     expr: (sum(node_memory_MemTotal_bytes) - sum(node_memory_MemFree_bytes + node_memory_Buffers_bytes + node_memory_Cached_bytes) ) / sum(node_memory_MemTotal_bytes) * 100 > 80
