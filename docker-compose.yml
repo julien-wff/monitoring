@@ -6,6 +6,7 @@ networks:
     name: monitoring-internal
   proxy:
     external: true
+    name: caddy
 
 
 volumes:
