@@ -83,6 +83,22 @@ services:
     labels:
       org.label-schema.group: "monitoring"
 
+  process-exporter:
+    image: ncabatoff/process-exporter
+    container_name: process-exporter
+    privileged: true
+    command:
+      - '--procfs=/host/proc'
+      - '-config.path=/config/config.yml'
+    volumes:
+      - /proc:/host/proc:ro
+      - ./process-exporter:/config:ro
+    restart: unless-stopped
+    networks:
+      - monitoring
+    labels:
+      org.label-schema.group: "monitoring"
+
   cadvisor:
     image: gcr.io/cadvisor/cadvisor:latest
     container_name: cadvisor
