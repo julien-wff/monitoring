@@ -35,6 +35,7 @@ scrape_configs:
 
   - job_name: 'docker-exporter'
     scrape_interval: 2m
+    scrape_timeout: 1m
     static_configs:
       - targets: ['docker-exporter:9100']
 
